@@ -1,3 +1,3 @@
-$ \alpha $ 
+$\alpha$ 
 
 # Hello, world
