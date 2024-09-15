@@ -1,15 +1,15 @@
 # Site settings
-title: gankai geekskai Blog
-SEOTitle: "gankai 博客 | geekskai Blog"
+title: Dirichy's Blog
+SEOTitle: "Dirichy 博客 | Dirichy Blog"
 header-img: "img/homePage.jpg"
-email: "geeks.kai@gmail.com"
+email: "dirichy@qq.com"
 name: "ahrefs-site-verification"
 content: "73e18207fdfc639fe75e40ce593597b93803f891984db47190a0b225bc676e06"
 description: "Things that can make you miserable will surely make you strong, grow up, and must experience what others can't!"
-keyword: "Vue, React, JavaScript, 博客, geekskai, ts, web, blog, js"
-url: "https://geekskai.com" # your host, for absolute URL
+keyword: "Vue, React, JavaScript, 博客, dirichy, ts, web, blog, js"
+url: "https://dirichy.github.io" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/geekskai/blog.git" # you code repository
+github_repo: "https://github.com/dirichy/dirichy.github.io.git" # you code repository
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
@@ -18,18 +18,18 @@ sidebar-avatar: /img/about-BY-gentle.png # use absolute URL, seeing it's used in
 
 # SNS settings
 RSS: false
-weibo_username: 6131084360
-zhihu_username: ren-qing-zi-ji-9
-github_username: geekskai
+# weibo_username: 6131084360
+zhihu_username: 阿福家的骡尝树
+github_username: dirichy
 # facebook_username:  baiying.qiu.7
-jianshu_username: 4365773d2dd5
-#twitter_username:   geekskai
+# jianshu_username: 4365773d2dd5
+twitter_username:   whoresboyfriend
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 permalink: pretty
 # permalink: none
-paginate: 10
+paginate: 20
 exclude: ["less", "node_modules", "Gruntfile.js", "package.json", "README.md"]
 anchorjs: true # if you want to customize anchor. check out line:181 of `post.html`
 
@@ -62,10 +62,10 @@ gitalk:
 
 # 统计
 
-# Analytics settings
-# Baidu Analytics
-ba_track_id: 5b94756de87b260b647aed0a5ca70e7c
-
+# # Analytics settings
+# # Baidu Analytics
+# ba_track_id: 5b94756de87b260b647aed0a5ca70e7c
+#
 # Google Analytics
 # ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
 # ga_domain: auto               # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto
