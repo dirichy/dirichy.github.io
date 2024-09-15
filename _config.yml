@@ -19,11 +19,11 @@ sidebar-avatar: /img/about-BY-gentle.png # use absolute URL, seeing it's used in
 # SNS settings
 RSS: false
 # weibo_username: 6131084360
-zhihu_username: 阿福家的骡尝树
+zhihu_username: a-fu-jix-de-luo-chang-shu-60-10
 github_username: dirichy
 # facebook_username:  baiying.qiu.7
 # jianshu_username: 4365773d2dd5
-twitter_username:   whoresboyfriend
+# twitter_username:   whoresboyfriend
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
