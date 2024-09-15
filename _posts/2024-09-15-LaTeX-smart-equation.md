@@ -10,7 +10,7 @@ title: "LaTeX smart equation"
 ```latex
 \newlength\inlineHeight
 \newlength\inlineWidth
-\long\def\(#1\){%
+\long\def\(#1\){
   \settoheight{\inlineHeight}{$#1$}
   \settowidth{\inlineWidth}{$#1$}
   \ifdim \inlineWidth > 0.5\textwidth
