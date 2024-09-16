@@ -1,5 +1,7 @@
 ---
 title: "LaTeX smart equation"
+tags:
+  - LaTeX
 ---
 # 动机
 在$ \LaTeX $ 写作中，我们有时候无法预知公式的大小，从而选择行内公式或者行间公式。

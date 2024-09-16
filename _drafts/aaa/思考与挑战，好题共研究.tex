@@ -1,0 +1,653 @@
+% !Mode:: "TeX:UTF-8"
+%-------------------- 文类 --------------------
+\documentclass[UTF8, a4paper, 12pt, oneside, twocolumn]{article}
+
+%-------------------- 宏包 --------------------
+\ExplSyntaxOn
+\msg_redirect_name:nnn{fontspec}{no-script}{info}	% 抑制 fontspec 警告
+\ExplSyntaxOff
+\usepackage{cuted}
+\usepackage{picinpar}
+\usepackage{newtxtext}
+\usepackage{lipsum} % 该宏包是通过 \lipsum 命令生成一段本文，正式使用时不需要引用该宏包
+\usepackage[table,dvipsnames,svgnames]{xcolor}	% 表格着色
+\usepackage[strict]{changepage} % 提供一个 adjustwidth 环境
+\usepackage{framed} % 实现方框效果
+\usepackage[toc, page]{appendix}
+\usepackage{amscd}	% 交换图
+\usepackage[tbtags]{amsmath}	% 数学, 底部序号
+\usepackage{amsopn}
+\usepackage{amssymb}
+\usepackage{array}	% 数组环境
+\usepackage{anyfontsize}	% 消除 Font shape `OT1/cmss/m/n' in size <4> not available
+\usepackage{animate}	% 插入 gif
+\usepackage{algorithm}	% 算法环境
+\usepackage{algpseudocode}	% 算法环境
+\usepackage{bm}	% 数学粗体斜体
+\usepackage{calc}
+\usepackage{cases}	% 括号宏包
+\usepackage{changes}	% 标注批改
+\usepackage[space,	% 保留汉字与英文或数字之间的空格
+			heading,	% 开启章节标题设置功能
+			UTF8,	%编码为 UTF-8
+			fontset = fandol	% 使用 fandol 中文字体
+			]{ctex}	% 文档类为 article 或 book 时需要开启, ctexart 或 ctexbook 则不需要
+\usepackage{dsfont}	% \mathds{} 字体
+\usepackage{epsfig}
+\usepackage{enumerate}	% 编号
+\usepackage{enumitem}
+\usepackage{fancyhdr}	% 页眉页脚等
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}	% 字体设置, 需要 XeLaTeX
+\usepackage{geometry}	% 调节纸张等
+\usepackage{latexsym}
+\usepackage{mathrsfs}
+\usepackage[amsmath, thmmarks]{ntheorem}	% 定理宏包
+\usepackage{setspace}	% 用于设置行距
+\usepackage{verbatim}	% 提供 comment 环境
+\usepackage{commath}	% 微分算子, 偏微算子
+\usepackage{layout}
+\usepackage{graphicx}	% 插图
+\usepackage{booktabs}
+\usepackage{longtable}	% 长表格
+\usepackage{ifthen}	% 这个宏包提供逻辑判断命令
+\usepackage[nodayofweek]{datetime}
+\usepackage{lipsum}
+%\usepackage{titlesec}	% 标题形式
+\usepackage{titletoc}	% 标题形式
+\usepackage{multicol}	% 分栏显示
+\usepackage{listings}	% 显示代码
+\usepackage{blkarray}	% 标记矩阵???
+\usepackage{cite}	% 参考文献标注
+\usepackage{comment}	% 注释
+\usepackage[stable]{footmisc}	% 脚注
+%\usepackage{pageslts}
+\usepackage{pdfpages}	% 嵌入 PDF
+\usepackage{tikz}	% 画图
+\usepackage{tikz-cd}	% 交换图
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.markings}
+\usepackage{textcomp}
+%\IfFileExists{trackchanges.sty}{\usepackage{trackchanges}}{\usepackage{../template/packages/trackchanges}}
+\usepackage{gensymb}
+\usepackage{float}	% 浮动体
+\usepackage{bbm}	% \mathbbm
+\usepackage{subcaption}	% 图表标题
+\usepackage{multirow}	% 表格跨行
+\usepackage{diagbox}	% 表格斜线
+\usepackage{extarrows}	% 箭头
+\usepackage{eso-pic}	% 水印
+\usepackage{mathtools}
+\usepackage{emptypage}	% 空白页不显示页眉
+\usepackage{qrcode}	% 二维码
+\usepackage{printlen}	% 显示长度变量
+\usepackage[all, cmtip]{xy}	% 交换图
+\usepackage[unicode,
+			colorlinks	= true,
+			linkcolor	= black,
+			urlcolor	= black,
+			citecolor	= black,
+			anchorcolor	= blue]{hyperref}	% 参考文献超链接
+\IfFileExists{\jobname.aux}{}{\renewcommand{\filemoddate}[1]{D:\pdfdate+08'00'}}	% 在没有 \jobname.aux 文件的时候防止 hyperxmp 报错
+\usepackage{hyperxmp}	% pdfinfo
+\usepackage{wrapfig}
+\usepackage{bigstrut}
+\usepackage{tcolorbox}
+\tcbuselibrary{most}
+\usepackage{autobreak}
+%-------------------- 杂项 --------------------
+\geometry{left = 2.0 cm, right = 2.0 cm, top = 3.0 cm, bottom = 3.0 cm}	% 边注设置
+\renewcommand{\baselinestretch}{1.17}	% 行距, 系统默认约 1.2, ctex 默认约 1.56
+%\linespread{1}	% 行距
+\setlength{\baselineskip}{40pt}
+
+\newcommand\blfootnote[1]{%
+	\begingroup%
+	\renewcommand\thefootnote{}\footnote{#1}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+}
+
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+\newcommand{\upref}[1]{\textsuperscript{\textsuperscript{\ref{#1}}}}
+
+\setcounter{MaxMatrixCols}{20}	% 矩阵最大列数
+
+% 矩阵行距
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+	\edef\arraystretch{#1}%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{*\c@MaxMatrixCols c}}
+\makeatother
+
+% 水印
+\newcommand{\watermark}[3]{\AddToShipoutPictureBG{
+\parbox[b][\paperheight]{\paperwidth}{
+\vfill%
+\centering%
+\tikz[remember picture, overlay]%
+	\node [rotate = #1, scale = #2] at (current page.center)%
+		{\textcolor{gray!80!cyan!30}{#3}};
+\vfill}}}
+%\newcommand{\watermarkoff}{\ClearShipoutPictureBG}
+
+%\xeCJKsetup{CJKecglue={}}
+
+\raggedbottom	% 防止报 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+\allowdisplaybreaks[2]	% 公式内允许换页
+
+%\pagenumbering{arabic}
+
+\hypersetup
+{
+	% 颜色
+	colorlinks	= true,
+	linkcolor	= black,
+	urlcolor	= black,
+	citecolor	= black,
+	anchorcolor	= blue,
+}
+
+%-------------------- 字体设置 --------------------
+\newcommand{\chuhao}{\fontsize{42.2pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochu}{\fontsize{36.1pt}{\baselineskip}\selectfont}
+\newcommand{\yihao}{\fontsize{26.1pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoyi}{\fontsize{24.1pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{22.1pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoer}{\fontsize{18.1pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{16.1pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosan}{\fontsize{15.1pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14.1pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosi}{\fontsize{12.1pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowu}{\fontsize{9.0pt}{\baselineskip}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoliu}{\fontsize{6.5pt}{\baselineskip}\selectfont}
+\newcommand{\qihao}{\fontsize{5.5pt}{\baselineskip}\selectfont}
+\newcommand{\bahao}{\fontsize{5.0pt}{\baselineskip}\selectfont}
+\newcommand{\shier}{\fontsize{12.0pt}{\baselineskip}\selectfont}
+\ctexset{
+	contentsname = {\zihao{3}\mdseries\heiti 目录},
+	part = {format = {\zihao{3}\mdseries\heiti\centering}},
+	section = {
+		format = {\zihao{-4}\mdseries\heiti\flushleft},
+		number = \bfseries{\arabic{section}}
+	},
+	subsection = {
+		format = {\zihao{5}\mdseries\heiti\flushleft},
+		number = \bfseries{\arabic{section}.\arabic{subsection}}
+	},
+	subsubsection = {format = {\zihao{5}\mdseries\songti\flushleft}},
+}
+
+\titlecontents{part}
+			[0em]
+			{\zihao{3}\mdseries\heiti}
+			{\contentslabel{0em}}
+			{\hspace*{0em}}
+			{\hfill \bfseries\contentspage}
+
+\titlecontents{section}
+			[2.3em]
+			{\zihao{-4}\mdseries\heiti}
+			{\contentslabel{2.3em}}
+			{\hspace*{-2.3em}}
+			{\titlerule*[1pc]{.} \bfseries\contentspage}
+
+\titlecontents{subsection}
+			[5.5em]
+			{\zihao{5}\mdseries\heiti}
+			{\contentslabel{3.2em}}
+			{\hspace*{-3.2em}}
+			{\titlerule*[1pc]{.} \bfseries\contentspage}
+
+\titlecontents{subsubsection}
+			[8.5em]
+			{\zihao{5}\mdseries\songti}
+			{\contentslabel{3.9em}}
+			{\hspace*{-3.9em}}
+			{\titlerule*[1pc]{.} \contentspage}
+
+\floatname{algorithm}{\mdseries\heiti 算法}
+\renewcommand{\algorithmicrequire}{\heiti 输入:}
+\renewcommand{\algorithmicensure}{\heiti 输出:}
+\renewcommand\appendixname{附录}
+\renewcommand\appendixtocname{附录}
+\renewcommand\appendixpagename{\zihao{-4}\mdseries\heiti 附录}
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\DeclareCaptionFont{song}{\songti}
+\DeclareCaptionFont{hei}{\heiti}
+\DeclareCaptionFont{minusfive}{\zihao{-5}}
+\DeclareCaptionFont{five}{\zihao{5}}
+\captionsetup*[figure]{	% 图标题设置
+	font={song, minusfive}	% 宋体小五
+}
+\captionsetup*[table]{	% 表标题设置
+	font={hei, minusfive}	% 黑体小五
+}
+\captionsetup*[algorithm]{	% 算法标题设置
+	font={song, minusfive}	% 宋体小五
+}
+
+%-------------------- 自定义符号 --------------------
+\def\<{\left\langle}
+\def\>{\right\rangle}
+\def\({\left(}
+\def\){\right)}
+\def\-{\textrm{-}}	% 数学环境内使用 -, 而不是减号
+\def\1{\mathbbm{1}}
+\def\a{\alpha}
+\def\A{~\mathrm{A}}
+\def\AC{\mathrm{AC}}
+\def\al{\bm\alpha}
+\DeclareMathOperator{\argmin}{argmin}
+\def\ba{\beta}
+\def\bA{\bm A}
+\def\bbH{\mathbb{H}}
+\def\bbS{\mathbb{S}}
+\def\be{\bm\beta}
+\def\bh{\bm h}
+\newcommand{\bs}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}	% 斜线除号
+\def\bT{\mathbb{T}}
+\def\bU{\bm U}
+\def\BV{\mathrm{BV}}
+\def\bx{\bm x}
+\def\C{\mathbb{C}}	% 复数 C
+\def\mca{\mathcal}
+\def\cis{\displaystyle\bigcap_{k = 1}^\infty}
+\def\cov{\mathbf{Cov}}
+\def\csum{\displaystyle\sum_{k = 1}^\infty}
+\def\cT{\mathcal{T}}
+\def\cu{\displaystyle\bigcup_{k = 1}^\infty}
+\def\curl{\mathbf{curl}}
+\DeclareMathOperator{\ch}{ch}	% 双曲余弦
+\DeclareMathOperator{\diam}{diam}
+\def\de{\delta}
+\def\dba{\displaystyle\bigcap}	% 集合交
+\def\dbigcap{\displaystyle\bigcap}	% 集合交
+\def\dbigcup{\displaystyle\bigcup}	% 集合并
+\def\dbu{\displaystyle\bigcup}	% 集合并
+\def\di{\mathrm{d}}	% 微分算符 d
+\def\diff{\mathrm{d}}	% 微分算符 d
+\def\dinf{\displaystyle\inf}
+\def\divr{\mathbf{div}}
+\DeclareMathOperator{\diag}{diag}	% 对角矩阵 diag
+\def\dint{\displaystyle\int}
+\def\dlim{\displaystyle\lim}
+\def\dmax{\displaystyle\max}
+\def\dmin{\displaystyle\min}
+\def\dsum{\displaystyle\sum}	% 求和号
+\def\dsup{\displaystyle\sup}
+\def\dmmm{~\mathrm{dm^3}}
+\def\D{\Delta}
+\def\Di{\mathrm{D}}	% 微分算符 D
+\def\e{\mathrm{e}}	% 自然对数的底数
+%\def\E{\mathbb{E}}	% \R 上赋予了欧氏拓扑
+\def\et{\bm\eta}
+\def\ep{\varepsilon}
+\def\fb{\bm f}
+\def\g{~\mathrm{g}}
+\def\ga{\bm\gamma}
+\def\geq{\geqslant}	% 大于或等于号, 下面一划是斜的
+\def\grad{\mathbf{grad}}
+\def\h{~\mathrm{h}}
+\def\heq{\mathbin{\widehat{=}}}
+\def\hin{\mathbin{\widehat{\in}}}
+\def\H{\mathrm{H}}	% 共轭转置 H
+\def\i{\mathrm{i}}	% 虚数单位 i
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{Im}
+\def\I{\bm{I}}		% 单位矩阵 I
+\def\Int{\mathrm{Int}}	% 内部
+\def\J{~\mathrm{J}}
+\def\JK{~\mathrm{J}~\cdot ~\mathrm{K}^{-1}}
+\def\kJ{~\mathrm{kJ}}
+\def\K{~\mathrm{K}}
+\DeclareMathOperator{\Ker}{Ker}
+\def\l[{\left[}
+\def\lb{\left\{}
+\def\ld{\left.}
+\def\lllcdots{$%
+\cdots\cdots\cdots\cdots\cdots%
+\cdots\cdots\cdots\cdots\cdots%
+\cdots\cdots\cdots\cdots\cdots%
+\cdots\cdots\cdots\cdots\cdots$}
+\def\lrb#1{\left\{ #1 \right\}}
+\def\lrv#1{\left| #1 \right|}
+\def\lrvv#1{\left\| #1 \right\|}
+\def\lv{\left|}
+\def\leq{\leqslant}	% 小于或等于号, 下面一划是斜的
+\def\mf#1{\marginpar{\footnotesize #1}}
+\def\m{\mathrm{m}}
+\def\mol{~\mathrm{mol}}
+\def\mr{\mathring}
+\def\ms#1{\marginpar{\scriptsize #1}}
+\def\N{\mathbb{N}}	% 自然数集 N
+\def\om{\omega}
+\def\oR{\overline{\mathbb{R}}}
+\def\ol{\overline}
+\def\p{\varphi}
+\DeclareMathOperator{\proj}{proj}	% 向量的投影 proj
+\def\pa{\partial}
+\def\Pa{~\mathrm{Pa}}
+\def\pl{\mathbin{/\mskip-2.5mu/}}
+\def\Q{\mathbb{Q}}	% 有理数 Q
+\def\qrh#1{\href{#1}{\XeTeXLinkBox{\qrcode{#1}}}}	% XeLaTeX 下使得二维码是超链接
+\def\r]{\right]}
+\def\rb{\right\}}
+\def\rd{\right.}
+\def\rv{\right|}
+\DeclareMathOperator{\rank}{rank}	% 矩阵的秩 rank
+\def\R{\mathbb{R}}	% 实数域 R
+\def\rel{\mathrm{rel}}
+\def\Rie{\mathcal{R}}	% 黎曼可积 R
+\def\RP{\mathbb{RP}}	% 实数域 R
+\def\RR{\mathrm{R}}
+\def\s{~\mathrm{s}}
+\def\scr{\mathscr}
+\DeclareMathOperator{\sign}{sign}	% 映射度
+\def\sg{\sigma}
+\DeclareMathOperator{\sgn}{sgn}	% 符号函数
+\DeclareMathOperator{\sh}{sh}	% 双曲正弦
+\def\sn{\mathrm{span}}
+\def\st{~\textrm{s.t.}~}
+\def\sx{\mathscr{X}}
+\DeclareMathOperator{\supp}{supp}	% 支撑集
+\def\T{\mathrm{T}}	% 转置 T
+\def\te{\theta}
+\def\tr{\mathrm{tr}}	% 矩阵的迹 tr
+\DeclareMathOperator{\tah}{th}	% 双曲正切
+\def\U{\mathring{U}}	% 去心邻域 U 上面有一圈
+\def\V{~\mathrm{V}}
+\def\wh{\widehat}
+\def\wt{\widetilde}
+\def\xra{\xrightarrow}
+\def\xle{\xlongequal}
+\def\xlra{\xlongrightarrow}
+\def\xLra{\xLongrightarrow}
+\def\Z{\mathbb{Z}}	% 整数 Z
+
+%-------------------- \item 编号 --------------------
+\AddEnumerateCounter{\chinese}{\chinese}{}	% 中文编号
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\labelenumi}{\textbf{\theenumi}.}	% 设置第一级编号为 1.
+\renewcommand{\theenumii}{\arabic{enumii}}
+\renewcommand{\labelenumii}{(\theenumii)}	% 设置第二级编号为 (1)
+\renewcommand{\theenumiii}{\roman{enumiii}}
+\renewcommand{\labelenumiii}{(\theenumiii)}	% 设置第三级编号为 (i)
+\setlist[enumerate]{itemindent = 2em, leftmargin = 0ex, listparindent = 2em}
+\setlist[itemize]{itemindent = 2em, leftmargin = 0ex, listparindent = 2em}
+
+%-------------------- 正文 --------------------
+\definecolor{Theoremcolor}{rgb}{1,0.9,0.8} % 文本框颜色
+\definecolor{TheoremColor}{rgb}{1,0.6,0} % 文本框颜色
+\definecolor{Warncolor}{rgb}{1,0.9,0.9} % 文本框颜色
+\definecolor{WarnColor}{rgb}{0.8,0,0} % 文本框颜色
+\definecolor{Definitioncolor}{rgb}{0.9,1,0.9} % 文本框颜色
+\definecolor{DefinitionColor}{rgb}{0,0.5,0} % 文本框颜色
+\definecolor{Corollarycolor}{rgb}{0.95,1,1} % 文本框颜色
+\definecolor{CorollaryColor}{rgb}{0,0.5,0.5} % 文本框颜色
+\definecolor{Examplecolor}{rgb}{0.9,0.9,0.9} % 文本框颜色
+\definecolor{ExampleColor}{rgb}{0.5,0.5,0.5}% 文本框颜色
+\definecolor{Remarkcolor}{rgb}{1,1,0.9} % 文本框颜色
+\definecolor{RemarkColor}{rgb}{0.5,0.5,0}% 文本框颜色
+\definecolor{Exercisecolor}{rgb}{1,0.9,1} % 文本框颜色
+\definecolor{ExerciseColor}{rgb}{0.5,0,0.5}% 文本框颜色
+\definecolor{Propositioncolor}{rgb}{0.95,0.95,1} % 文本框颜色
+\definecolor{PropositionColor}{rgb}{0,0,0.5} % 文本框颜色
+\definecolor{Nullcolor}{rgb}{0.98,0.98,0.98} % 文本框颜色
+\definecolor{NullColor}{rgb}{0.8,0.8,0.8} % 文本框颜色
+\definecolor{Proofcolor}{rgb}{1,0.95,0.95}
+\definecolor{SolutionColor}{rgb}{1,0,0}
+\definecolor{ProofColor}{rgb}{1,0,0}
+\definecolor{Solutioncolor}{rgb}{1,0.95,0.95}
+
+% ------------------******-------------------
+% 注意行末需要把空格注释掉，不然画出来的方框会有空白竖线
+\newtcbtheorem{Solution}{解}{breakable,colback=Solutioncolor,colframe=SolutionColor,fonttitle=\bfseries}{So}
+\newtcbtheorem{Corollary}{推论}{breakable,colback=Corollarycolor,colframe=CorollaryColor,fonttitle=\bfseries}{Co}
+\newtcbtheorem{Definition}{定义}{breakable,colback=Definitioncolor,colframe=DefinitionColor,fonttitle=\bfseries}{De}
+\newtcbtheorem{Theorem}{定理}{breakable,colback=Theoremcolor,colframe=TheoremColor,fonttitle=\bfseries}{Th}
+\newtcbtheorem{EExercise}{习题}{separator sign none,breakable,colback=Exercisecolor,colframe=ExerciseColor,fonttitle=\bfseries}{Ex}
+\newtcbtheorem{Warn}{易错点}{breakable,colback=Warncolor,colframe=WarnColor,fonttitle=\bfseries}{Wa}
+\newtcbtheorem{Example}{例}{breakable,colback=Examplecolor,colframe=ExampleColor,fonttitle=\bfseries}{Ex}
+\newtcbtheorem{Remark}{点评}{breakable,colback=Remarkcolor,colframe=RemarkColor,fonttitle=\bfseries}{Re}
+\newtcbtheorem{Proposition}{命题}{breakable,colback=Propositioncolor,colframe=PropositionColor,fonttitle=\bfseries}{Pr}
+\newtheorem*{Proof}{证明}
+\newtcolorbox{Null}{breakable,colback=Nullcolor,colframe=NullColor}
+\newif\ifproof
+\newenvironment{Ex}[1][]{\prooffalse \begin{EExercise}{#1}{}}%
+{\ifproof%
+\hfill\ensuremath{\square}\end{Proof}%
+\fi%
+\end{EExercise}}
+\newcommand{\pr}{\tcblower \begin{Proof}\prooftrue }
+\setlength{\abovedisplayskip}{1pt} %%% 3pt 个人觉得稍妥，可自行设置
+\setlength{\belowdisplayskip}{3pt}
+\newcommand\OMOM{\begin{Null}{}{}%
+如果大家有不会的问题，可以加OM学社的QQ群在群里问哦！%
+\begin{figure}[H]%
+\centering%
+\begin{minipage}[t]{.25\linewidth}\centering%
+\qrh{https://jq.qq.com/?_wv=1027&k=57DLax6}%
+\end{minipage}%
+\hspace{10mm}%
+\begin{minipage}[t]{.25\linewidth}\centering%
+\qrh{http://weixin.qq.com/r/Zjn-54fE5tqZrcOE92x0}%
+\end{minipage}%
+\caption*{\heiti\zihao{3}欢迎扫码加群及关注公众号}%
+\end{figure}%
+\end{Null}%
+}
+
+
+\setenumerate[1]{itemsep=0pt,partopsep=-30pt,parsep=0pt,topsep=0pt}
+\setitemize[1]{itemsep=0pt,partopsep=-30pt,parsep=0pt,topsep=0pt}
+\newcounter{mysection}
+\renewcommand{\section}[1]{\stepcounter{mysection}\textbf{\themysection.#1}\par}
+\title{思考与挑战 好题共研究}%在这里填标题
+\author{供稿：OM学社}%这里填供稿
+\date{}
+\pagestyle{empty}
+% ------------------******-------------------
+\begin{document}
+\newcommand\Om\Omega
+\newcommand\OO{$\Om$}
+\newcommand\F{\mathscr{F}}
+\newcommand\FF{$\F$}
+\newcommand\Pb[1][]{%
+\ifthenelse{\equal{#1}{}}{\mathbb{P}}{\mathbb{P}\left(#1\right)}}
+\newcommand\PP{$\Pb$}
+\newcommand\bu[1]{#1^c}
+\newcommand\limm[1]{\dlim_{#1\rightarrow \infty}}
+\newcommand\Too[2][]{\xlongrightarrow[#1]{#2}}
+\newcommand\To\rightarrow
+\newcommand\sgm{$\sigma$-代数}
+\newcommand\Bo[1][]{\ifthenelse{\equal{#1}{}}{\mathscr{B}}{\mathscr{B}^{#1}}}
+\newcommand\Cb[2]{\binom{#1}{#2}}
+\newcommand\yi[2][]{\ifthenelse{\equal{#1}{}}{\mathbbm{1}_{#2}}{\mathbbm{1}_{#2}\left(#1\right)}}
+\renewcommand\exp[1]{\mathrm{e}^{#1}}
+\newcommand\E[1]{\mathbb{E}\left(#1\right)}
+\renewcommand\D[1]{\mathrm{D}\left(#1\right)}
+\newcommand\limsupp[2][\infty]{\displaystyle\varlimsup_{#2\rightarrow#1}}
+\newcommand\liminff[2][\infty]{\displaystyle\varliminf_{#2\rightarrow#1}}
+\renewcommand\limsup{\varlimsup}
+\newcommand\dliminf{\displaystyle\varliminf}
+\newcommand\Pbb[2]{\Pb[#1|#2]}
+\newcommand\as{\hspace{3pt plus 1pt minus 1pt}\mathrm{a.s.}}
+\newcommand\dl{\perp}
+\newcommand\iid{\hspace{3pt plus 1pt minus 1pt}\mathrm{i.i.d}}
+\newcommand\Poi[1]{\mathcal{P}\left(#1\right)}
+\newcommand\dprod{\displaystyle\prod}
+\newcommand\calF{\mathcal{F}}
+\newcommand\calA{\mathcal{A}}
+\newcommand\calC{\mathcal{C}}
+\newcommand{\minus}{\mathbin{\backslash}}
+\renewcommand{\dbigcup}{\displaystyle\bigcup}
+
+\newenvironment{myalign}%
+{\vspace{-15pt}\vspace{-15pt}\begin{align*}}%
+{\end{algin*}}
+\maketitle
+\thispagestyle{empty}
+\begin{Ex}[(前置知识：数学分析)]{}
+对于两个非$0$无穷小量$\{a_n\},\{b_n\}$，定\\义$\{a_n\}\prec \{b_n\}\iff\{\frac{a_n}{b_n}\}$为无穷小量。
+\begin{enumerate}
+	\item $\{a_n\}$为非零无穷小量，求证：$\exists\{b_n\},\{c_n\}\text{为非零无穷小量},\{b_n\}\prec \{a_n\}\prec\{c_n\}$.
+	\item $\forall i\in\{0,1,\cdots N\},\{a_{i,n}\}$为非零无穷小量，求证：$\exists\{b_n\},\{c_n\}$为非零无穷小量，$\forall i\in\{0,1,\cdots N\},\{b_n\}\prec \{a_{i,n}\}\prec\{c_n\}$.
+	\item $\forall i\in\N,\{a_{i,n}\}$为非零无穷小量，求证：$\exists\{b_n\},\{c_n\}\text{为非零无穷小量},\forall i\in\N,\{b_n\}\prec \{a_{i,n}\}\prec\{c_n\}$.
+\end{enumerate}
+（选自OM模拟期末考）
+\pr
+\begin{enumerate}
+\item 取$b_n=a_n^2,c_n=\sqrt{|a_n|}$即可. 
+\item 取$b_n=\dprod_{i=0}^{N}a_{i,n}^2,c_n=\dsum_{i=0}^{N}\sqrt{|a_{i,n}|}$即可.
+\item 令$S_n=\inf\{k:|a_k|\geq 1\}\cup\{n\},T_n=\sup\{k:-1\leq k\leq n,\dsum_{i=0}^{k}\sqrt{|a_{i,n}|}<\frac1k\}$. 令$b_n=\dprod_{i=0}^{S_n}a_{i,n}^2,c_n=\dsum_{i=0}^{T_n}\sqrt{|a_{i,n}|}$. 下证它们满足条件. 显然$S_n,T_n$是良定义的，我们首先证明$\lim S_n=\infty,\lim T_n=\infty$. $\forall k\in\N$，我们有$\dlim_{n\to\infty}\displaystyle\max_{0\leq i\leq k}|a_{i,n}|=0$，故$\exists N\in\N,\forall m>N,\displaystyle\max_{0\leq i\leq k}|a_{i,m}|<1$. 不妨设$N>k$，则$\forall m>N,\forall i\leq k,|a_{i,m}|<1$. 故$S_m\geq k$. 从而有$\lim S_n=\infty$. $\forall k\in\N$，我们有$\dlim_{n\to\infty}\dsum_{i=0}^{k}\sqrt{|a_{i,n}|}=0$，故$\exists N\in\N,\forall m>N,\dsum_{i=0}^{k}\sqrt{|a_{i,n}|}<\frac1k$. 不妨设$N>k$，则$\forall m>N,T_m\geq k$. 从而有$\lim T_n=\infty$. 接下来我们来证明$\forall i\in\N,\{b_n\}\prec \{a_{i,n}\}\prec\{c_n\}$. $\exists N\in\N,\forall n>N,S_n,T_n>i$. 故$\lim\frac{|a_{i,n}|}{c_n}=\lim\frac{|a_{i,n}|}{\sum_{t=0}^{T_n}\sqrt{|a_{t,n}|}}\leq\lim\frac{|a_{i,n}|}{\sqrt{|a_{i,n}|}}=0$. $\lim\frac{b_n}{|a_{i,n}|}=\lim\frac{\prod_{t=0}^{S_n}a_{t,n}^2}{|a_{i,n}|}\leq\lim\frac{a_{i,n}^2}{|a_{i,n}|}=0$. 故$\{b_n\},\{c_n\}$符合题意. 
+\end{enumerate}
+\end{Ex}
+\begin{Remark}{}{}
+这道题目研究了非零无穷小序列关于收敛速度成的偏序关系，三个小问的结论逐步加强。第一小问这个偏序中没有极大元，也没有极小元；第二小问说明有限集总有界；第三小问说明即使是可数集也总是有界的。这与$\R$中的序关系很不一样，可数集$\Z$在$\R$中是无界的。这说明这个偏序关系有相当复杂的结构。由于极限的收敛可以用差为无穷小来描述，而级数的收敛也是极限的收敛，故这个问题实际上说明，在正项级数敛散性判别中，即使选取可数个收敛的正项级数，也一定有一个级数收敛的比它们更慢。故用可数个正项级数做比较不可能判定所有正项级数的敛散性，这说明级数的敛散性是很复杂的一件事情。
+\end{Remark}
+\begin{Ex}[前置知识：小学二年级的逻辑]{}
+你是一名旅行家，你来到了一个三岔路口，路边有个人。已知两条路中有且仅有一条路是正确的路，路边的那个人要么只说真话要么只说假话，现在你只能进行一次提问，只能使用一般疑问句，他会用是否回答你。请问你如何提问才能知道正确的路。\\
+（选自数理逻辑思考题）
+\pr
+我们只能问一个问题，只能获取两个答案，所以不可能同时获取正确的路和此人说话的真假。因此我们需要问一个问题，不论他说真话还是说假话答案都是一样的。类似$(-1)^2=1^2=1$，我们可以问：“如果我问你：`正确的路是不是左边这一条’，你是否会回答：`是’？”这样的话如果他说真话，且路在左边，那么`正确的路是不是左边这一条’的答案应该是`是’，所以这个问题的答案是`是’；如果他说假话且路在左边，那么`正确的路是不是左边这一条’的答案应该是`否'，所以这个问题的答案应该是`是'。正确的路在右边的时候也是同样的。
+
+但是做到这里，我们仅仅是凭借一些技巧“猜”了一个答案出来，这个答案并不具备一般性。为了能通过一些“数学推理”得出这个答案，我们需要对这个问题进行形式化。所谓的“一般疑问句”可以看成是一个命题是否成立，故这个人可以看成一个未知的函数，我们输入一个命题，它输出一个答案。记命题$p$为“左边的路是正确的路”，命题$q$为“这个人说真话”，记$\nu(x)$为命题$x$的真假性，用$1,0$分别表示真假。记$\phi(x)$为你问“$x$是否为真命题？”时那个人的回答。假设我们构造了一个合适的$x$让我们能根据$\phi(x)$得到$\nu(p)$，那么应该要有$\phi(x)=\nu(p)$或者$\phi(x)=1-\nu(p)$，否则不可能根据$\phi(x)$的值得到$\nu(p)$的值。不妨尝试构造一个$x$使得对于$\nu(p),\nu(q)$的任意取值，都有$\phi(x)=\nu(p)$. 由于$q$为真时$\phi(x)=\nu(x)$，$q$为假时$\phi(x)=1-\nu(x)$. 又有$\phi(x)=\nu(p)$，故$p,q,x$的真假性之间应该有如下关系：
+$$\begin{array}{cccc}
+p&q&\phi(x)&x\\
+0&0&0&1\\
+0&1&0&0\\
+1&0&1&0\\
+1&1&1&1
+\end{array}$$
+故我们可以定义$x$为“$p$和$q$的真假性相同”。如果你觉得你看不出这个描述，你甚至可以构造$x$为“$p$和$q$都是真的或者$p$和$q$都是假的”。从而我们的问题是：“左边的路是正确的路和你说真话这两件事情真假性是否相同？”易于验证这个问题也是符合条件的。
+\end{Ex}
+\begin{Remark}{}{}
+这道题目看上去像一个脑筋急转弯，实际上也确实有很多人把它当成脑筋急转弯。大家看到答案可能只会觉得“哇这个问法好妙！”，却不知道其内在的逻辑。在这个版本的解答中我们将一个脑筋急转弯的问题抽象成了一个数学问题，然后利用严谨的推理去得出一个合理的答案，这个思想是很重要的。很多时候解决问题的第一步就是把问题用数学语言描述清楚，之后就可以用数学的强大工具去战胜它。
+\end{Remark}
+\begin{Ex}[(前置知识：测度与概率)]{}
+设$\Omega$是一不可数集，$\calF$是包含$\Omega$中一切单点集的最小$\sigma-$代数，则$\Delta:=\{(\omega,\omega):\omega \in \Omega\}\notin \calF\times\calF$.
+(选自测度与概率作业）
+\pr
+令$$\calA:=\{A\in\calF:|A|\leq\aleph_0\vee|A^c|\leq\aleph_0\}$$
+下证$\calF=\calA$
+\begin{enumerate}
+\item $\calF\supset\calA\supset\{{\omega}:\omega\in\Omega\}$显然成立. 
+\item 要证$\calA\supset\calF$, 只需证$\calA$为$\sigma$-代数.
+\begin{enumerate}
+\item $|\Omega^c|=|\emptyset|\leq\aleph_0$, 故$\Omega\in\calA$
+\item $\forall A\in\calA$,若$|A|\leq\aleph_0$, 则$|(A^c)^c|=|A|\leq\aleph_0$,故$A^c\in\calA$；若$|A^c|\leq\aleph_0$，则显然也有$A^c\in\calA$. 
+\item $\forall A_n\in\calF, n\in\N$, $I_1=\{n:|A_n|\leq\aleph_0\},I_2=\{n:|(A_n)^c|\leq\aleph_0\}$, 若$I_2=\emptyset$, 则$|\dbigcup_{n\in\N}A_n|\leq\aleph_0$; 若$I_2\neq\emptyset$, 则
+\begin{small}$|\dbigcup_{n\in\N}A_n|=|\bigcap_{n\in\N}(A_n)^c|\leq|\bigcap_{n\in I_2}(A_n)^c|\leq\aleph_0$\end{small}
+
+\end{enumerate} 
+\end{enumerate}
+定义映射$f:\calF\to\calF$
+\begin{equation*}
+f(A)=\left\{
+	\begin{array}{lcl}
+	A \quad &,&|A|\leq\aleph_0\\
+	A^c \quad &,&|A^c|\leq\aleph_0\\
+	\end{array}
+	\right.
+\end{equation*}
+显然有$f(A)=f(A^c),f(A\cup B)\subset f(A)\cup f(B), f(A\cap B)\subset f(A)\cup f(B)$. 对$A\subset \Omega\times\Omega,\omega_1\in \Omega$，定义$A(\omega_1):=\{\omega_2\in\Omega:(\omega_1,\omega_2)\in A\}$. 令$$\Lambda:=\{A\in\calF\times\calF:|\dbigcup_{\omega_1\in\Omega}f(A(\omega_1))|\leq\aleph_0\}$$
+下证$\Lambda=\calF\times\calF$. 显然$\Lambda$为$\pi-$系。由单调类定理，我们只需要证明其包含可测矩形，且其为$\lambda-$系. 
+\begin{enumerate}
+\item 令$\calC :=\{A_1\times A_2 :A_i\in\calF,i=1,2\}$
+$\forall A\in\calC,\exists\A_i\in\calF,i=1,2,A=A_1\times A_2,\forall \omega_1\in\Omega$, 
+\begin{equation*}
+f(A(\omega_1))=\left\{
+	\begin{array}{ccl}
+	f(A_2) &,&\omega_1\in A_1\\
+	\emptyset&,&\omega_1\notin A_1
+\end{array}
+	\right.
+\end{equation*}
+则$\dbigcup_{\omega_1\in\Omega}f(A(\omega_1))=f(A_2)$，
+从而我们有$|\dbigcup_{\omega_1\in\Omega}f(A(\omega_1))|\leq\aleph_0$. 故$\calC\subset\Lambda$
+\item 下证$\Lambda$为$\lambda -$系.
+\begin{enumerate}
+\item $\Omega\times\Omega\in\calC\in\Lambda$
+\item $B,C\in\Lambda,C\subset B$，
+\begin{equation*}
+\begin{small}
+\begin{aligned}
+&\Big|\dbigcup_{\omega_1\in\Omega}f((B\minus C)(\omega_1))\Big|\\
+\leq&\Big|\dbigcup_{\omega_1\in\Omega}\left(f(B(\omega_1))\cup f(C(\omega_1))\right)\Big|\\
+=&\Big|\Big(\dbigcup_{\omega_1\in\Omega}f(B(\omega_1))\Big)\cup\Big(\dbigcup_{\omega_1\in\Omega}f(C(\omega_1))\Big)\Big|\leq\aleph_0\\
+\end{aligned}
+\end{small}
+\end{equation*}
+\item $B_n,n\in\N,B_n\subset B_{n+1}$
+$\forall \omega_1\in\Omega$, 若$\exists n:B_n(\omega_1)$不可数，不妨设$n=1$,则
+\begin{equation*}
+\begin{small}
+\begin{aligned}
+&|f((\dbigcup_{n\in\N}B_n)(\omega_1))|=|\bigcap_{n\in\N}(B_n(\omega_1))^c|\\
+\leq&|B_1(\omega_1)^c|=|f(B_1(\omega_1))|\leq|\dbigcup_{n\in\N}f(B_n(\omega_1))|
+\end{aligned}
+\end{small}
+\end{equation*}
+若$\forall n:B_n(\omega_1)$可数,
+\begin{equation*}
+\begin{aligned}
+&|f((\dbigcup_{n\in\N}B_n)(\omega_1))|=|\dbigcup_{n\in\N}(B_n(\omega_1))|
+\end{aligned}
+\end{equation*} 
+$\begin{aligned}
+\text{故}&|\dbigcup_{\omega_1\in\Omega}f((\dbigcup_{n\in\N}B_n)(\omega_1))|\\
+\leq&|\dbigcup_{\omega_1\in\Omega}\dbigcup_{n\in\N}f(B_n(\omega_1))|\\
+=&|\dbigcup_{n\in\N}\dbigcup_{\omega_1\in\Omega}f(B_n(\omega_1))|=\aleph_0
+\end{aligned}$\\
+即
+$\dbigcup_{n\in\N}B_n\in\Lambda$.
+\end{enumerate}
+故$\Lambda=\sigma(\mathcal{C})=\calF\times\calF$
+\end{enumerate}
+而$\dbigcup_{\omega_1\in\Omega}f(\Delta(\omega_1))=\dbigcup_{\omega_1\in\Omega}\{\omega_1\}=\Omega$, 不可数集，故$\Delta\times\Delta\notin\calF\times\calF$.
+\end{Ex}
+\begin{Remark}{}{}
+一个小的集合$A$关于某种运算$\Gamma$取闭包得到一个大的集合$\Gamma(A)$是我们常见的一种定义集合的手段，例如$\{0\}$加上对后继运算的封闭性得到自然数集，$\R$的子集加上极限运算得到其闭包等。但这种定义通常都是非构造性的，因此要判断一个元素是否在我们生成的集合中就是一件比较困难的事情。通常我们的做法是用一个性质$p$来把一个元素和这个闭包“分离”。这个性质$p$必须满足对$\Gamma$运算的封闭性，也即满足性质$p$的元素的运算结果也满足性质$p$，这样的话根据单调类我们只需要验证$A$中元素满足性质$p$就可以得到$\Gamma(A)$中的元素也满足性质$p$。从而最终得到不满足性质$p$的元素不在$\Gamma(A)$中。例如我们要证明$\R/\Q$的代表元集$T$不是Borel集，而Borel集是开集对可数并以及余集的闭包，故我们需要寻找一个性质$p$能关于可数并和余集封闭，而且开集满足这个性质，而且$T$不满足这个性质。在这个例子中我们可以取性质$p$为可测。通常情况下要寻找一个合适的性质来分离闭包和某个特定的元素并不容易，但是这几乎是我们唯一能做的证明一个元素不在运算生成的闭包中的方法。
+\end{Remark}
+\begin{Ex}[(前置知识：高等代数）]{}
+设$n$为大于2的整数，求证平面上$n$个不共线的点至少确定$n$条直线。（一条直线被一组点确定指这组点中至少两个在这条直线上）\\
+(选自OM模拟期末考）
+\pr
+	用反证法,假设确定了$m$ 条直线,$m<n$,待定$x_1,x_2,\cdots ,x_n$,
+	分别对应$A_1,A_2,\cdots ,A_n$这$n$个点;\\
+	要求每条直线上的点的赋值之和为$0$,即$m$个方程构成的齐次线性方程组
+	由$n>m$,必有非零解$(x_1,x_2,\cdots ,x_n)$;\\
+	设过$A_i$有$a_i$条直线，$a_1\geqslant 2$\\
+	不妨设$x_1<x_2<\cdots <x_n$,此时必有$x_1<0<x_n$;\\
+	对所有过$A_1$的直线上的赋值求和:
+	\[a_1x_1+x_2+\cdots +x_n=0\]
+	对$A_n$同理:
+	\[x_1+x_2+\cdots +a_nx_n=0\]
+	作差得:
+	\[(a_1-1)x_1-(a_n-1)x_n=0\]
+	则$x_1,x_n$同号，与上文矛盾，命题得证. 
+\end{Ex}
+\OMOM
+
+
+
+
+%-------从这里开始——————————
+
+
+
+%-------这里结束——————
+
+
+
+\end{document}
