@@ -23,7 +23,7 @@ var TEX = MathJax.InputJax.TeX;
 var PREFILTER = TEX.prefilterMath;
 TEX.Augment({
 prefilterMath: function (math,displaymode,script) {
-math = "\\displaystyle"+math;
+math = "\\displaystyle "+math;
 return PREFILTER.call(TEX,math,displaymode,script);
 }
 });
