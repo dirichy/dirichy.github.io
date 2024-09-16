@@ -4,7 +4,6 @@ tags:
   - LCDT
 ---
 
-$$\everymath{\displaystyle}$$
 # 用控制收敛定理求解下面两道题目：
 1. 设 $$\displaystyle\lim_{n \rightarrow +\infty} \frac{a_n}{n^2}=a, \lim_{n \rightarrow+\infty} \frac{b_n}{n^2}=b$$. 证明极限 $$\lim_{n \rightarrow+\infty} \frac{1}{n^5} \sum_{k=0}^n a_k b_{n-k}$$ 存在并求其值.
 

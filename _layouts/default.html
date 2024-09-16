@@ -18,6 +18,16 @@
       "HTML-CSS": { fonts: ["TeX"] }
     }
   });
+  Mathjax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+var TEX = MathJax.InputJax.TeX;
+var PREFILTER = TEX.prefilterMath;
+TEX.Augment({
+prefilterMath: function (math,displaymode,script) {
+math = "\\displaystyle{"+math+"}";
+return PREFILTER.call(TEX,math,displaymode,script);
+}
+});
+});
   MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
         alert("Math Processing Error: "+message[1]);
       });
