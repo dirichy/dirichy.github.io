@@ -13,7 +13,7 @@ github_repo: "https://github.com/dirichy/dirichy.github.io.git" # you code repos
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "Hello, world!"
+sidebar-about-description: "This is my girlfriend."
 sidebar-avatar: /img/about-BY-gentle.jpg # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # SNS settings
