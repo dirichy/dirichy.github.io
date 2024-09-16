@@ -5,7 +5,7 @@ tags:
 ---
 
 # 用控制收敛定理求解下面两道题目：
-1. 设 $$\displaystyle\lim_{n \rightarrow +\infty} \frac{a_n}{n^2}=a, \lim_{n \rightarrow+\infty} \frac{b_n}{n^2}=b$$. 证明极限 $$\lim_{n \rightarrow+\infty} \frac{1}{n^5} \sum_{k=0}^n a_k b_{n-k}$$ 存在并求其值.
+1. 设 $$\lim_{n \rightarrow +\infty} \frac{a_n}{n^2}=a, \lim_{n \rightarrow+\infty} \frac{b_n}{n^2}=b$$. 证明极限 $$\lim_{n \rightarrow+\infty} \frac{1}{n^5} \sum_{k=0}^n a_k b_{n-k}$$ 存在并求其值.
 
 1. 设 $$\lim_{n \rightarrow+\infty} \beta_n=0$$, 函数 $$f$$ 在 $$[-1,2]$$ 上有界, 在 $$[0,1]$$ 上 Riemann 可积, 证明： $$\lim_{n \rightarrow+\infty} \frac{1}{n} \sum_{k=1}^n f\left(\frac{k}{n}+\beta_n\right)=\int_0^1 f(x) d x$$.
 
