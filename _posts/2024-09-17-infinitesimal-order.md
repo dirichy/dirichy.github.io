@@ -7,7 +7,7 @@ tags:
 
 # 问题
 
-对于两个非$$0$$无穷小量$$\{a_n\},\{b_n\}$$，定\\义$$\{a_n\}\prec \{b_n\}\iff\{\frac{a_n}{b_n}\}$$为无穷小量。
+对于两个非$$0$$无穷小量$$\{a_n\},\{b_n\}$$，定义$$\{a_n\}\prec \{b_n\}\iff\{\frac{a_n}{b_n}\}$$为无穷小量。
 	1. $$\{a_n\}$$为非零无穷小量，求证：$$\exists\{b_n\},\{c_n\}\text{为非零无穷小量},\{b_n\}\prec \{a_n\}\prec\{c_n\}$$.
 	1. $$\forall i\in\{0,1,\cdots N\},\{a_{i,n}\}$$为非零无穷小量，求证：$$\exists\{b_n\},\{c_n\}$$为非零无穷小量，$$\forall i\in\{0,1,\cdots N\},\{b_n\}\prec \{a_{i,n}\}\prec\{c_n\}$$.
 	1. $$\forall i\in\mathbb{N},\{a_{i,n}\}$$为非零无穷小量，求证：$$\exists\{b_n\},\{c_n\}\text{为非零无穷小量},\forall i\in\mathbb{N},\{b_n\}\prec \{a_{i,n}\}\prec\{c_n\}$$.
