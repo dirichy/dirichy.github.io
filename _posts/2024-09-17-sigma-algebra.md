@@ -12,7 +12,7 @@ tags:
 
 # 证明
 
-对于$ \omega_1 \in \Omega $ 和集合$ A \subset \Omega \times \Omega $ ，我们用$ A(\omega_1) $ 表示 $ \{\omega_2 \in \Omega:(\omega_1,\omega_2) \in A\} $ .
+对于$$ \omega_1 \in \Omega $$ 和集合$$ A \subset \Omega \times \Omega $$ ，我们用$$ A(\omega_1) $$ 表示 $$ \{\omega_2 \in \Omega:(\omega_1,\omega_2) \in A\} $$ .
 令$$\mathcal{A}:=\{A\in\mathcal{F}:\vert A\vert \leq\aleph_0\vee\vert A^c\vert \leq\aleph_0\}$$
 下证$$\mathcal{F}=\mathcal{A}$$
 1. $$\mathcal{F}\supset\mathcal{A}\supset\{{\omega}:\omega\in\Omega\}$$显然成立. 
@@ -22,7 +22,7 @@ tags:
     1. $$\forall A\in\mathcal{A}$$,若$$\vert A\vert \leq\aleph_0$$, 则$$\vert (A^c)^c\vert =\vert A\vert \leq\aleph_0$$,故$$A^c\in\mathcal{A}$$；若$$\vert A^c\vert \leq\aleph_0$$，则显然也有$$A^c\in\mathcal{A}$$. 
     1. $$\forall A_n\in\mathcal{A}, n\in\mathbb{N}$$, $$I_1=\{n:\vert A_n\vert \leq\aleph_0\},I_2=\{n:\vert (A_n)^c\vert \leq\aleph_0\}$$, 若$$I_2=\emptyset$$, 则$$\vert \bigcup_{n\in\mathbb{N}}A_n\vert \leq\aleph_0$$; 若$$I_2\neq\emptyset$$, 则$$\vert \bigcup_{n\in\mathbb{N}}A_n\vert =\vert \bigcap_{n\in\mathbb{N}}(A_n)^c\vert \leq\vert \bigcap_{n\in I_2}(A_n)^c\vert \leq\aleph_0$$.
 
-故$$ \mathcal{A} $$ 为$ \sigma $ 代数。
+故$$ \mathcal{A} $$ 为$$ \sigma $$ 代数。
 
 定义映射$$f:\mathcal{F}\to\mathcal{F}$$
 $$
