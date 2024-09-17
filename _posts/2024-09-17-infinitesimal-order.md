@@ -14,9 +14,9 @@ tags:
 
 # 证明
 
-1. 取$b_n=a_n^2,c_n=\sqrt{|a_n|}$即可. 
-1. 取$b_n=\prod_{i=0}^{N}a_{i,n}^2,c_n=\sum_{i=0}^{N}\sqrt{|a_{i,n}|}$即可.
-1. 令$S_n=\inf\{k:|a_k|\geq 1\}\cup\{n\},T_n=\sup\{k:-1\leq k\leq n,\sum_{i=0}^{k}\sqrt{|a_{i,n}|}<\frac1k\}$. 令$b_n=\prod_{i=0}^{S_n}a_{i,n}^2,c_n=\sum_{i=0}^{T_n}\sqrt{|a_{i,n}|}$. 下证它们满足条件. 显然$S_n,T_n$是良定义的，我们首先证明$\lim S_n=\infty,\lim T_n=\infty$. $\forall k\in\N$，我们有$\lim_{n\to\infty}\displaystyle\max_{0\leq i\leq k}|a_{i,n}|=0$，故$\exists N\in\N,\forall m>N,\displaystyle\max_{0\leq i\leq k}|a_{i,m}|<1$. 不妨设$N>k$，则$\forall m>N,\forall i\leq k,|a_{i,m}|<1$. 故$S_m\geq k$. 从而有$\lim S_n=\infty$. $\forall k\in\N$，我们有$\lim_{n\to\infty}\sum_{i=0}^{k}\sqrt{|a_{i,n}|}=0$，故$\exists N\in\N,\forall m>N,\sum_{i=0}^{k}\sqrt{|a_{i,n}|}<\frac1k$. 不妨设$N>k$，则$\forall m>N,T_m\geq k$. 从而有$\lim T_n=\infty$. 接下来我们来证明$\forall i\in\N,\{b_n\}\prec \{a_{i,n}\}\prec\{c_n\}$. $\exists N\in\N,\forall n>N,S_n,T_n>i$. 故$\lim\frac{|a_{i,n}|}{c_n}=\lim\frac{|a_{i,n}|}{\sum_{t=0}^{T_n}\sqrt{|a_{t,n}|}}\leq\lim\frac{|a_{i,n}|}{\sqrt{|a_{i,n}|}}=0$. $\lim\frac{b_n}{|a_{i,n}|}=\lim\frac{\prod_{t=0}^{S_n}a_{t,n}^2}{|a_{i,n}|}\leq\lim\frac{a_{i,n}^2}{|a_{i,n}|}=0$. 故$\{b_n\},\{c_n\}$符合题意. 
+1. 取$b_n=a_n^2,c_n=\sqrt{\vert a_n\vert }$即可. 
+1. 取$b_n=\prod_{i=0}^{N}a_{i,n}^2,c_n=\sum_{i=0}^{N}\sqrt{\vert a_{i,n}\vert }$即可.
+1. 令$S_n=\inf\{k:\vert a_k\vert \geq 1\}\cup\{n\},T_n=\sup\{k:-1\leq k\leq n,\sum_{i=0}^{k}\sqrt{\vert a_{i,n}\vert }<\frac1k\}$. 令$b_n=\prod_{i=0}^{S_n}a_{i,n}^2,c_n=\sum_{i=0}^{T_n}\sqrt{\vert a_{i,n}\vert }$. 下证它们满足条件. 显然$S_n,T_n$是良定义的，我们首先证明$\lim S_n=\infty,\lim T_n=\infty$. $\forall k\in\N$，我们有$\lim_{n\to\infty}\displaystyle\max_{0\leq i\leq k}\vert a_{i,n}\vert =0$，故$\exists N\in\N,\forall m>N,\displaystyle\max_{0\leq i\leq k}\vert a_{i,m}\vert <1$. 不妨设$N>k$，则$\forall m>N,\forall i\leq k,\vert a_{i,m}\vert <1$. 故$S_m\geq k$. 从而有$\lim S_n=\infty$. $\forall k\in\N$，我们有$\lim_{n\to\infty}\sum_{i=0}^{k}\sqrt{\vert a_{i,n}\vert }=0$，故$\exists N\in\N,\forall m>N,\sum_{i=0}^{k}\sqrt{\vert a_{i,n}\vert }<\frac1k$. 不妨设$N>k$，则$\forall m>N,T_m\geq k$. 从而有$\lim T_n=\infty$. 接下来我们来证明$\forall i\in\N,\{b_n\}\prec \{a_{i,n}\}\prec\{c_n\}$. $\exists N\in\N,\forall n>N,S_n,T_n>i$. 故$\lim\frac{\vert a_{i,n}\vert }{c_n}=\lim\frac{\vert a_{i,n}\vert }{\sum_{t=0}^{T_n}\sqrt{\vert a_{t,n}\vert }}\leq\lim\frac{\vert a_{i,n}\vert }{\sqrt{\vert a_{i,n}\vert }}=0$. $\lim\frac{b_n}{\vert a_{i,n}\vert }=\lim\frac{\prod_{t=0}^{S_n}a_{t,n}^2}{\vert a_{i,n}\vert }\leq\lim\frac{a_{i,n}^2}{\vert a_{i,n}\vert }=0$. 故$\{b_n\},\{c_n\}$符合题意. 
 
 # 点评
 
