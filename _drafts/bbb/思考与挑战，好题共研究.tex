@@ -418,7 +418,7 @@
 \newtcbtheorem{EExercise}{习题}{separator sign none,breakable,colback=Exercisecolor,colframe=ExerciseColor,fonttitle=\bfseries}{Ex}
 \newtcbtheorem{Warn}{易错点}{breakable,colback=Warncolor,colframe=WarnColor,fonttitle=\bfseries}{Wa}
 \newtcbtheorem{Example}{例}{breakable,colback=Examplecolor,colframe=ExampleColor,fonttitle=\bfseries}{Ex}
-\newtcbtheorem{Remark}{注}{breakable,colback=Remarkcolor,colframe=RemarkColor,fonttitle=\bfseries}{Re}
+\newtcbtheorem{Remark}{点评}{breakable,colback=Remarkcolor,colframe=RemarkColor,fonttitle=\bfseries}{Re}
 \newtcbtheorem{Proposition}{命题}{breakable,colback=Propositioncolor,colframe=PropositionColor,fonttitle=\bfseries}{Pr}
 \newtheorem*{Proof}{证明}
 \newtcolorbox{Null}{breakable,colback=Nullcolor,colframe=NullColor}
@@ -485,206 +485,33 @@
 \newcommand\dl{\perp}
 \newcommand\iid{\hspace{3pt plus 1pt minus 1pt}\mathrm{i.i.d}}
 \newcommand\Poi[1]{\mathcal{P}\left(#1\right)}
+\newcommand\dprod{\displaystyle\prod}
+\newcommand\calF{\mathcal{F}}
+\newcommand\calA{\mathcal{A}}
+\newcommand\calC{\mathcal{C}}
+\newcommand{\minus}{\mathbin{\backslash}}
+\renewcommand{\dbigcup}{\displaystyle\bigcup}
+
 \newenvironment{myalign}%
 {\vspace{-15pt}\vspace{-15pt}\begin{align*}}%
 {\end{algin*}}
 \maketitle
 \thispagestyle{empty}
-\begin{Ex}[(前置知识：数学分析1)]{}
-	设$\phi:\mathbb{R}\rightarrow\mathbb{R}$为非负下凸函数,$\phi (0)=0$且$\dlim_{t\to\pm\infty}\frac{\phi (t)}{t}=\infty$。$\forall s\in\mathbb{R}$定义
-	$\phi^*(s)=\dsup_{t\in\mathbb{R}}\{st-\phi(t)\}$。证明：
-	\begin{enumerate}[itemsep=-10pt]
-		\item$\phi^*:\mathbb{R}\rightarrow\mathbb{R}$为非负函数,$\phi^*(0)=0$\\
-		\item$\phi^*$为下凸函数\\
-		\item$\dlim_{s\to+\infty}\frac{\phi^*(s)}{s}=+\infty$\\
-		\item$(\phi^*)^*=\phi$\\
-	\end{enumerate}
-	(选自OM模拟期末考）
+\begin{Ex}[(前置知识：伽罗瓦理论)]{}
+	设 $u \in \mathbb{R}^*, n \in \mathbb{N}_{+}$. 若 $u^n \in \mathbb{Q}$ 且 $(u+1)^n \in \mathbb{Q}$, 证明 $u \in \mathbb{Q}$. (提示：考虑 $\mathbb{Q}(u, \zeta) / \mathbb{Q}$, 其中 $\zeta$ 为 $n$ 次本原单位根.)
 	\pr
-	凸函数的性质见命题\ref{Pr:concave}。
-	\begin{enumerate}
-		\item 令$h_s(t):=st-\phi(t)$.显然,\\\begin{small}$\dlim_{t\rightarrow \infty}\frac{\phi(t)}{|t|}=+\infty$\end{small}\\
-		      故$\forall s \in\R,\dlim_{t\rightarrow \infty}\frac{st-\phi(t)}{|t|}=-\infty,\exists M>0,\forall\left|t\right|>M,h_s(t)<0$。
-		      而$h_s$在$[-M,M]$上连续，故$\exists x_0,h_s(x_0)=\max\limits_{x\in[-M,M]}\{h_s(x)\}\geq h_s(0)=0$，从而\\$h_s(x_0)=\max\limits_{x\in\R}\{h_s\(x\)\}=\sup\limits_{x\in\R}\{h_s\(x\)\}=\phi^*\(s\)\geq 0$从而$\phi^*$是良定义的（这点需要注意，一个数集有无上确界需要验证）非负函数。
-		\item 设$x_1<x_3,x_2=\lambda x_1+\(1-\lambda\) x_3$,则\begin{small}
-			      $\phi^*(x_2)=\dsup_{t\in\R}\{x_2t-\phi(t)\}$\\$=\dsup_{t\in\R}\{\lambda(x_1t-\phi(t))+(1-\lambda)(x_3t-\phi(t))\}\leq\dsup_{t\in\R}\{\lambda(x_1t-\phi(t))+\dsup_{u\in\R}\{(1-\lambda)(x_3u-\phi(u))\}\}=\dsup_{t\in\R}\{\lambda(x_1t-\phi(t))\}+\dsup_{u\in\R}\{(1-\lambda)(x_3u-\phi(u))\}=\lambda \phi^*(x_1)+(1-\lambda) \phi^*(x_3)$
-		      \end{small}
-		\item $\forall x\in\R$\\$\dliminf_{s\rightarrow +\infty}\frac{\phi^*(s)}{s}
-		      =\dliminf_{s\rightarrow +\infty}\sup_{t\in\R}\{t-\frac{\phi(t)}{s}\}
-		      \geq \dliminf_{s\rightarrow +\infty}\sup_{t\in\R}\{t-\frac{\phi(t)}{s}\}
-		      \geq\dlim_{s\rightarrow +\infty}x-\frac{\phi(x)}{s}
-		      =x$故$\dlim_{s\rightarrow +\infty}\frac{\phi^*(s)}{s}=+\infty$
-		\item 一方面，$\displaystyle\phi^{**}\(x\)$\\$=\displaystyle\max_{s\in\R}\{xs-\phi^*\(s\)\}$\\$=\displaystyle\max_{s\in\R}\{xs-\max_{t\in\R}\{st-\phi\(t\)\}\}$\\$\displaystyle\leq \max_{s\in\R}\{xs-\(sx-\phi\(x\)\)\}=\phi\(x\)$\\
-			      另一方面，
-			      令$\displaystyle y:=\phi'_-\(x\)$，则$\displaystyle\phi^{**}\(x\)\geq xy-\max_{t\in\R}\{yt-\phi\(t\)\}$。令$\displaystyle F\(t\):=yt-\phi\(t\)$，则$F'_-\(x\)=y-\phi'_-\(x\)=0\geq 0,$\\$F'_+\(x\)=y-\phi'_+\(x\)\leq 0$,从而$\displaystyle\max_{t\in\R}\{yt-\phi(t)\}=F(x)$，故$\displaystyle \phi^{**}(x)\geq xy-\max_{t\in\R}\{yt-\phi(t)\}=xy-(yx-\phi(x))=\phi(x)$\\
-			      综上$\phi^{**}=\phi$。
-	\end{enumerate}
+	\newcommand{\Aut}{\mathrm{Aut}}
+	显然$\Q(u,\zeta)$为$x^n-u^n$在$\Q$上的分裂域, 故为Galois扩张.
+	若$u\notin\Q$, 则存在$\sigma\in\Aut_\Q\Q(u,\zeta),\sigma(u)\neq u$.
+	故$\sigma(u)=\zeta^i u,n\nmid i$. 由于$u+1$是$x^n-(u+1)^n$的根, 故$1+\zeta^i u=\sigma(1+u)=\zeta^j(1+u)\neq 1+u,n\nmid j$.
+	若$i\not\equiv j\mod n$, 则$u=\frac{\zeta^j-1}{\zeta^i-\zeta^j},u+1=\frac{\zeta^i-1}{\zeta^i-\zeta^j}$.
+	则$\frac{u}{u+1}=\frac{\zeta^j-1}{\zeta^i-1}\in\R$.
+	从而$k\pi=\arg(\zeta^j-1)-\arg(\zeta^i-1)=\frac{\arg(\zeta^j)-\arg(\zeta^i)}{2}=\frac{j-i}{n}\pi$, 即$i\equiv j\mod n$, 矛盾!
+	故$i\equiv j\mod n$. 从而$1+\zeta^i u=\zeta^j(1+u)=\zeta^i(1+u)$, 得$\zeta^i=1$, 矛盾! 故$u\in\Q$.
 \end{Ex}
-\begin{Proposition}{凸函数的性质}{concave}
-
-	设$f:\R\rightarrow\R$为下凸函数，则：
-	\begin{enumerate}
-		\item $x_1<x_2<x_3\Rightarrow$\\$\frac{f\(x_2\)-f\(x_1\)}{x_2-x_1}\leq\frac{f\(x_3\)-f\(x_1\)}{x_3-x_1}\leq\frac{f\(x_3\)-f\(x_2\)}{x_3-x_2}$
-		      \begin{Proof}
-			      $\lambda:=\frac{x_3-x_2}{x_3-x_1}$，则$x_2=\lambda x_1+(1-\lambda) x_3,$\\$f\(x_2\)\leq\lambda f\(x_1\)+\(1-\lambda\) f\(x_3\)$\\
-				      将$\lambda=\frac{x_3-x_2}{x_3-x_1}$代入整理即证。
-		      \end{Proof}
-		\item $\forall x\in \R,f'_+\(x\),f'_-\(x\)$都存在,从而$f$连续。其中:
-		      $f'_+\(x\):=\dlim_{t\rightarrow x+}\frac{f\(t\)-f\(x\)}{t-x}$\\
-		      $f'_-\(x\):=\dlim_{t\rightarrow x-}\frac{f\(t\)-f\(x\)}{t-x}$
-		      \begin{Proof}
-			      令$g_x(t):=\frac{f(t)-f(x)}{t-x}$取$y<x,\forall t_1>t_2>x,g_x(t_1)\geq g_x(t_2)\geq g_x(y)$，故由单调有界知$f'_+(x)$存在，同理$f'_-(x)$存在。
-		      \end{Proof}
-		\item $\forall x<y,f'_+(x)\leq f'_-(y)\forall z,f'_-(z)\leq f'_+(z)$从而：$\forall x<y,f'_-\(x\)\leq f'_+\(x\)\leq f'_-\(y\)\leq f'_+\(y\)$故$f'_-,f'_+$为单调不减函数。
-		      \begin{Proof}
-			      $\forall x<y,f'_+\(x\)=\dlim_{t\rightarrow x+}g_x\(t\)\leq g_x\(y\)=g_y\(x\)\leq\dlim_{t\rightarrow y-}g_y\(t\)$\\
-			      $\forall x,f'_-(x)=\dlim_{t\rightarrow 0+}g_x(x-t)\leq\dlim_{t\rightarrow 0+}g_x(x+t)=f'_+(x)$
-		      \end{Proof}
-		\item $f\(x\)=\dmin_{t\in\R}\{f\(t\)\}\Leftrightarrow f'_-\(x\)\leq 0\leq f'_+\(x\)$
-		      \begin{Proof}
-			      $\Rightarrow:f'_-\(x\)=\dlim_{t\rightarrow x-}\frac{f\(t\)-f\(x\)}{t-x}\leq\dlim_{t\rightarrow x-}\frac{f\(x\)-f\(x\)}{t-x}=0$\\
-			      同理$f'_+\(x\)\geq 0$\\
-			      $\Leftarrow:$\\$\forall y<x,g_x\(y\)\leq\dlim_{t\rightarrow x-}g_x\(t\)=f'_-\(x\)\leq 0$\\$\Rightarrow f\(y\)-f\(x\)\geq 0\(y-x\)=0$\\
-				      对$y>x$同理。
-		      \end{Proof}
-	\end{enumerate}
-	上述性质对上凸函数均有对偶的命题成立。
-\end{Proposition}
-
-
-\begin{Ex}[(前置知识：拓扑学和纲）]
-	证明或否定，满足$T2$公理的局部紧拓扑空间必然是正规空间。（选自彦文娇老师思考题）
-	\pr
-	我们来构造一个反例。由于局部紧Hausdorff空间必然是$T3$的,而$T3+C2$可以推出$T4$,故我们必须构造非$C2$的拓扑空间。考虑拓扑空间$(\R,\tau),\tau$为拓扑基$\mathscr{B}:=\{\{r\}:r\in\Q\}\cup\{\{s\}\cup\{\frac{[ns]}{n}:n > k,n\in\N\}:s\in\R\backslash\Q,k\in\N\}$生成的拓扑（请读者验证这是个拓扑基）。
-	首先我们证明这个拓扑是满足$T2$公理的，只需证这个拓扑比欧氏拓扑更大。\\
-	$\forall a<b,\forall x\in (a,b),$若$x\in\Q,$则$x\in\{x\}\subset (a,b)$。否则$x\notin\Q,\limm{n}\frac{[nx]}{n}=x,\exists k\in\N,\forall n>k,\frac{[nx]}{n}\in (a,b)$,从而$x\in\{x\}\cup\{\frac{[nx]}{n}:n > k,n\in\N\}\in\tau$。故$(a,b)\in\tau$,从而$\tau$是$T2$的。\\
-	接下来验证$\tau$是局部紧的：\\
-	$\forall x\in\R,$若$x\in\Q,$则$\{x\}$为$x$的紧邻域。否则$x\notin\Q$,下面验证$u:=\{x\}\cup\{\frac{[nx]}{n}:n > 0,n\in\N\}$为$x$的紧邻域。只需证该邻域的任何基覆盖（拓扑基中元素组成的覆盖）都有有限子覆盖即可。设$u=\dbigcup_{\alpha \in I}u_\alpha,u_\alpha\in\mathscr{B},$则$\exists \alpha_0\in I,x\in u_{\alpha_0},\exists k\in\N,\{x\}\cup\{\frac{[nx]}{n}:n > k,n\in\N\}\subset u_{\alpha_0},\forall n:0<n\leq k,\exists \alpha_n,\frac{[nx]}{n}\in u_{\alpha_n},$故$\{u_{\alpha_n}:n=0,1,\cdots k\}$为一族有限子覆盖。综上$\tau$是局部紧的。\\
-	最后我们来验证$\tau$是不满足$T4$公理的：\\
-	将无理数集划分为一个第二纲集和一个稠集$A,B$（论证过程中提到的纲和稠的概念全部都是欧氏拓扑下的），显然有无理数集的子集都是$(\R,\tau)$中的闭集，下证$A,B$无法被分离。设$A\subset U\in\tau,B\subset V\in\tau$,令$A_k=\{x\in A:\forall n>k,\frac{[nx]}{n}\in U\}$。由$U$为包含$A$的开集知$A=\dbigcup_{k\in\N}A_k$。由$A$为第二纲集，故$\exists t\in\N,(a,b)\in\R,A_t$在$(a,b)$中稠密。由$B$在$\R$中稠，知$\exists s\in B\cap (a,b),\exists r\in\N,\{s\}\cup\{\frac{[ns]}{n}:n > r,n\in\N\}\subset V,$令$m=\max\{r,t\}+520,c=\frac{[ms]}{m},d=\frac{[ms]+1}{m}$,则$s\in (c,d),(a,b)\cap(c,d)\neq\emptyset$。由$A_t$在$(a,b)$中稠知$\exists y\in A_t\cap (a,b)\cap(c,d),U\ni\frac{[my]}{m}=\frac{[ms]}{m}\in V,U\cap V\neq\emptyset$。从而$\tau$是非$T4$的。
-\end{Ex}
-
-
-\begin{Ex}[(前置知识：概率论)]
-	$N:\Om\To\N,\Pb[N=0]<1$为随机变量，独立地投掷一枚未必均匀的硬币$N$次，每次出现正面的概率为$p$，$X,Y$分别表示$N$次中出现正面和反面的次数。求证：\\$X\dl Y\iff \exists \lambda>0 ,N\sim \mathcal{P}(\lambda)$\\
-		（选自何辉老师作业）
-		\pr
-		令$q:=1-p$\\
-		“$\Leftarrow$”：
-	$\forall i,j\in \N$
-		\vspace{-15pt}\begin{align*}
-			  & \Pb[X=i,Y=j]                                                   \\
-			= & \Pb[X=i,N=i+j]                                                 \\
-			= & \Cb{i+j}{i}p^iq^{j}\frac{\lambda ^{i+j}}{(i+j)!}\exp{-\lambda} \\
-			= & \frac{p^i}{i!}\frac{q^j}{j!}\exp{-\lambda}                     \\
-			= & \frac{p^i}{i!}\exp{-\lambda p}\frac{q^j}{j!}\exp{-\lambda  q }
-			\vspace{-15pt}\end{align*}
-		故$X\sim \Poi{\lambda p},Y\sim \Poi{\lambda  q },X\dl Y$
-		“$\Rightarrow$”：
-	$\forall i,j\in \N$
-		\vspace{-15pt}\begin{align*}
-			  & \Pb[X=i,Y=j]                  \\
-			= & \Pb[X=i,N=i+j]                \\
-			= & \Pbb{X=i}{N=i+j}\Pb[N=i+j]    \\
-			= & \Cb{i+j}{i}p^iq^{j}\Pb[N=i+j]
-			\vspace{-15pt}\end{align*}
-		定义$\left\{\begin{array}{l}f(i):=p^{-i}i!\Pb[X=i] \\
-		g(j):=q^{-j}j!\Pb[Y=j]\end{array}\right.$则由\\$X\dl Y$,有$(i+j)!\Pb[N=i+j]=p^{-i}i!\Pb[X=i]q^{-j}j!\Pb[Y=j]\!=\!f(i)g(j)$\\
-		从而
-		\vspace{-15pt}\begin{align*}
-			  & f(i+1)g(j)           \\
-			= & (i+j+1)!\Pb[N=i+j+1] \\
-			= & f(i)g(j+1)
-			\vspace{-15pt}\end{align*}
-		(1)若$\exists i,f(i)g(i)=0$，\\
-		令$m\colon=\dmin\{i\colon f(i)g(i)=0\}$，\\
-		则$f(m)g(m)=0,f(m-1)g(m-1)>0$。不妨设$f(m)=0$，则$\Pb[X=m]=0$，则$\dsum_{k=m}^{+\infty}\Pbb{X=m}{N=k}\Pb[N=k]=0$
-		则$\forall k\geq m,\Pb[N=k]=0$，但
-		\vspace{-15pt}\begin{align*}
-			     & \Pb[N=2m-2]             \\
-			\geq & \Pb[X=m-1,Y=m-1]        \\
-			=    & \Pb[X=m-1]\Pb[Y=m-1]>0，
-			\vspace{-15pt}\end{align*}
-		故$2m-2<m,m=1$，从而$N=0\as$矛盾！故$\forall i,f(i)g(i)\neq 0$\\
-		(2)$\forall i,j \in \N, f(i)\neq 0,g(j)\neq 0$，则\\
-	$\exists \lambda>0,\frac{f(i+1)}{f(i)}=\frac{g(j+1)}{g(j)}=\lambda$，则$f(i)=f(0)\lambda ^i,g(j)=j(0)\lambda ^j$，则\\
-	$(i+j)!\Pb[N=i+j]=f(0)g(0)\lambda^{(i+j)}$，则$\Pb[N=i+j]=\frac{\lambda^{(i+j)}}{(i+j)!}f(0)g(0)$，又有$\dsum_{n=0}^{+\infty} \frac{\lambda^{n}}{n!}f(0)g(0)=1$，则$f(0)g(0)=\exp{-\lambda}$，故$\Pb[N=n]=\frac{\lambda^n}{n!}\exp{-\lambda}$，故$N\sim \Poi{\lambda}$
-\end{Ex}
-
-\begin{Ex}[前置知识：数学分析3]
-	请找出满足下列条件的函数和区间。
-	\begin{enumerate}
-		\item 两个累次积分存在而不相等的函数.
-		\item 二重积分存在而两个累次积分都不存在的函数.
-	\end{enumerate}
-	（选自汪林的《数学分析中的问题和反例》）
-	\pr
-	\begin{enumerate}
-		\item 设
-		      $$
-			      f(x, y)= \begin{cases}y^{-2}, & 0<x<y<1, \\ -x^{-2}, & 0<y<x<1, \\ 0, & otherwise\end{cases}
-		      $$
-		      对于 $0<y<1$, 有
-		      $$
-			      \int_0^1 f(x, y) d x=\int_0^y \frac{d x}{y^2}-\int_y^1 \frac{d x}{x^2}=1
-		      $$
-		      因而
-		      $
-			      \dint_0^1 d y \int_0^1 f(x, y) d x=1
-		      $\\
-		      同样地, 对于 $0<x<1$, 有
-		      $$
-			      \int_0^1 f(x, y) d y=-\int_0^x \frac{d y}{x^2}+\int_x^1 \frac{d y}{y^2}=-1
-		      $$
-		      因而
-		      $$
-			      \int_0^1 d x \int_0^1 f(x, y) d y=-1
-		      $$
-		      可见
-		      $$
-			      \int_0^1 d x \int_0^1 f(x, y) d y \neq \int_0^1 d y \int_0^1 f(x, y) d x
-		      $$
-		\item
-		      设 $x$ 为一有理数, 则将它表作正分母的既约分数后, 分母表示为 $q_x$. 今在正方形 $D=[0,1] \times[0,1]$ 上定义函数 $f$ 如下:\\
-		      $
-			      f(x, y)= \begin{cases}\frac{1}{q_x}+\frac{1}{q_y}, & x,y\in\Q \\ 0, & otherwise\end{cases}
-		      $\\
-		      兹证 $f$ 在 $D$ 上是可积的. 为此, 我们先来证明 $f$ 在 $D$ 中任一无理点处连续, 而在 其余点处间断.
-		      事实上, 设 $\left(x_0, y_0\right)$ 为 $D$ 中的任一无理点, 对于任给的 $\varepsilon>0$, 只有有限个小于或等于 $\frac{2}{\varepsilon}$ 的正整数. 因此, 使得 $\frac{1}{q_x} \geqslant \frac{\varepsilon}{2}, \frac{1}{q_y} \geqslant \frac{\varepsilon}{2}$ 的有理数 $x=\frac{p_x}{q_x}, y=\frac{p_y}{q_y}$ 只有有限个. 于 是, 存在 $x_0$ (注意, $x_0$ 是无理数!) 的 $\delta$-邻域, 使得适合不等式 $\frac{1}{q_x} \geqslant \frac{\varepsilon}{2}$ 的有理数 $x$ 全在 $\delta$-邻域之外. 同样, 由于 $y_0$ 也是无理数, 故存在 $y_0$ 的 $\xi$-邻域, 使得适合不等式 $\frac{1}{q_y} \geqslant \frac{\varepsilon}{2}$ 的有理数 $y$ 全在 $\xi$-邻域之外. 因此, 存在 $\left(x_0, y_0\right)$ 的一个 $\eta$-邻域, 在这个邻域中, 若 $(x, y)$ 为有理点, 则 $\frac{1}{q_x}+\frac{1}{q_y}<\varepsilon$; 若 $(x, y)$ 不是有理点, 则 $f(x, y)=0$; 而在 $\left(x_0, y_0\right)$ 处, $f\left(x_0, y_0\right)=0$. 由此可知, 当点 $(x, y)$ 落在 $\left(x_0, y_0\right)$ 的 $\eta$-邻域时, 就有\\
-		      $
-			      \left|f(x, y)-f\left(x_0, y_0\right)\right|<\varepsilon .
-		      $\\
-		      于是, $f$ 在 $D$ 中无理点上的连续性得以证明.
-		      设 $\left(x_0, y_0\right)$ 为 $D$ 中的任一有理点, 则
-		      $
-			      f\left(x_0, y_0\right)=\frac{1}{q_{x_0}}+\frac{1}{q_{y_0}}=:r>0
-		      $\\
-		      因为 $\left(x_0, y_0\right)$ 的任一邻域中都含有无理点 $(x, y)$, 在这种点上 $f(x, y)=0$, 所以当取 $\varepsilon(0<\varepsilon<r)$ 时, 就无法使\\
-		      $
-			      \left|f(x, y)-f\left(x_0, y_0\right)\right|<\varepsilon
-		      $\\
-		      成立. 因此, $f$ 在 $D$ 中的有理点上不连续.设 $\left(x_0, y_0\right)$ 为 $D$ 中任一其余的点, 即 $x_0, y_0$ 不全为有理数, 也不全为无理数. 不妨 设 $x_0$ 为有理数而 $y_0$ 为无理数, 此时 $f\left(x_0, y_0\right)=0$. 在 $\left(x_0, y_0\right)$ 的任一 $\delta$-邻域中都有有 理点 $\left(x_0, y\right)$, 在这种点上, 有\\
-		      $
-			      f\left(x_0, y\right)=\frac{1}{q_{x_0}}+\frac{1}{q_y}>\frac{1}{q_{x_0}}>0 .
-		      $
-		      于是, 当取 $0<\varepsilon<\frac{1}{q_{x_0}}$ 时, 就无法使\\
-		      $
-			      \left|f\left(x_0, y_0\right)-f\left(x_0, y\right)\right|<\varepsilon
-		      $
-		      成立. 因此, $f$ 在 $\left(x_0, y_0\right)$ 处不连续.
-		      现设 $I$ 为 $D=[0,1] \times[0,1]$ 中的全体无理点所成之集, 而 $I_1$ 与 $I_2$ 分别为 $x$ 轴上 的区间 $[0,1]$ 与 $y$ 轴上的区间 $[0,1]$ 中的全体无理点, 则有
-		      $
-			      I=I_1 \times I_2 .
-		      $
-		      因 $m(I)=m(I_1)m(I_2)=1$, 故 $m(D \backslash I)=0$, 可见 $f$ 在 $D$ 上的不连续点所成之集其测度为零. 又, $f$ 在 $D$ 上有界. 因此, $f$ 在 $D$ 上是可积的.
-		      最后, 我们证明 $f$ 在 $D$ 上的两个累次积分都不存在, 从而不能把 $f$ 在 $D$ 上的二重 积分化为累次积分来计算.
-		      我们任意固定 $y \in[0,1]$, 当 $y$ 为有理数时, $q_y$ 为一确定的正整数, 且有\\
-		      $
-			      f(x, y)= \begin{cases}\frac{1}{q_x}+\frac{1}{q_y}, & x \text { 为有理数, } \\ 0, & x \text { 为无理数. }\end{cases}
-		      $\\
-		      易见, $\varphi(x)=f(x, y)$ 在 $[0,1]$ 上无处连续, 从而不可积, 也就根本谈不上 $f$ 在 $D$ 上的累次积分. 另一方向同理。
-	\end{enumerate}
-\end{Ex}
+\begin{Remark}{}{}
+	伽罗瓦理论是代数中很重要的理论，很多人可能只知道伽罗瓦理论可以用来证明代数方程是否有根式解，但其实伽罗瓦理论在其他代数问题中也有广泛的应用。
+\end{Remark}
 \OMOM
 
 
