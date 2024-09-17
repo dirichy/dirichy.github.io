@@ -8,7 +8,7 @@ tags:
 {%raw%}
 # 问题
 
-设$\Omega$是一不可数集，$\mathcal{F}$是包含$\Omega$中一切单点集的最小$\sigma-$代数，则$\Delta:=\{(\omega,\omega):\omega \in \Omega\}\notin \mathcal{F}\times\mathcal{F}$.
+设$\Omega$是一不可数集，$\mathcal{F}$是包含$\Omega$中一切单点集的最小$\sigma-$代数，则$\Delta:= \{ (\omega,\omega):\omega \in \Omega \} \notin \mathcal{F}\times\mathcal{F}$.
 
 # 证明
 
