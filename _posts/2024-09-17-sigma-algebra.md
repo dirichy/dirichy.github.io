@@ -12,6 +12,7 @@ tags:
 
 # 证明
 
+对于$ \omega_1 \in \Omega $ 和集合$ A \subset \Omega \times \Omega $ ，我们用$ A(\omega_1) $ 表示 $ \{\omega_2 \in \Omega:(\omega_1,\omega_2) \in A\} $ .
 令$$\mathcal{A}:=\{A\in\mathcal{F}:\vert A\vert \leq\aleph_0\vee\vert A^c\vert \leq\aleph_0\}$$
 下证$$\mathcal{F}=\mathcal{A}$$
 1. $$\mathcal{F}\supset\mathcal{A}\supset\{{\omega}:\omega\in\Omega\}$$显然成立. 
