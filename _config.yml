@@ -53,12 +53,12 @@ kramdown:
 
 # Gitalk
 gitalk:
-  enable: false #是否开启Gitalk评论
-  clientID: d2223ef21ecae706fcb4 #生成的clientID
-  clientSecret: 8fecef465f9f3dc81f11bd98ec59d4644eb9282a #生成的clientSecret
-  repo: blog #仓库名称
-  owner: geekskai #github用户名
-  admin: geekskai
+  enable: true #是否开启Gitalk评论
+  clientID: Ov23liz5dD4eb23GgVm5 #生成的clientID
+  clientSecret: b68d145e07cd8f762bde5715f83951f171230de4 #生成的clientSecret
+  repo: dirichy.github.io #仓库名称
+  owner: dirichy #github用户名
+  admin: dirichy
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 # 统计
