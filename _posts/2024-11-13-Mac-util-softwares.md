@@ -70,12 +70,12 @@ sudo spctl --master-disable
 
 ## 破解
 有的软件正版很贵，所以我们可以下载学习版（请勿商用）。
-![mac精品应用](https://xclient.info/)就是破解软件网站之一，可以下载到alfred等等付费软件。
+[mac精品应用](https://xclient.info/)就是破解软件网站之一，可以下载到alfred等等付费软件。
 下载破解软件时注意甄别，因为我们关闭了系统保护，所以一定要注意不要让恶意软件在电脑上执行。
 
 ## brew
 macOS 是类unix系统，很多软件（尤其编程相关）需要在终端安装，但是macOS没有自带的包管理器。
-![brew](https://brew.sh/) 是一个无需sudo就可以安装软件的包管理器，刚好填补了这个缺点。
+[brew](https://brew.sh/) 是一个无需sudo就可以安装软件的包管理器，刚好填补了这个缺点。
 在macOS中安装python，lua，rust等等软件都可以使用brew很方便地安装，很多git项目也会提供brew的安装指导。
 因此非常推荐安装brew作为包管理器。
 
