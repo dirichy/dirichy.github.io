@@ -53,6 +53,7 @@ sudo spctl --master-disable
 1. alfred：使用command+space 执行各种快捷操作，包括打开app，在特定网站搜索，搜索文件等，还可以自定义工作流。让你从一切重复工作中解放，效率神器。
 1. copyq：剪切板管理工具，保存你的剪切板历史，防止因为复制了别的东西导致剪切板覆盖。
 1. clashX：魔法上网软件。
+1. [RWTS-PDFwriter](https://github.com/rodyager/RWTS-PDFwriter): 一个虚拟打印机，让mac能打印文件为pdf。可以结合`lp`命令脚本化操作。
 
 ## 强烈推荐软件
 强烈推荐软件为本人常用且觉得好用的软件。
