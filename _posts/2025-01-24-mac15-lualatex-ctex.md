@@ -20,5 +20,11 @@ tags:
 在 github 中找到了相关[issue](https://github.com/CTeX-org/ctex-kit/issues/722)，阅读后找到了
 ```bash
 sudo tlmgr conf texmf OSFONTDIR /System/Library/AssetsV2/com_apple_MobileAsset_Font7
+
 ```
 这个解决方案。不过似乎只是暂时的，需要等待以后出现更好的方案。
+
+这个方案有时不好用，可以试试下面这个环境变量的方案。
+```bash
+export OSFONTDIR="/System/Library/AssetsV2/com_apple_MobileAsset_Font7"
+```
